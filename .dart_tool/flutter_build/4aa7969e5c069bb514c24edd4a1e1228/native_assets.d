@@ -1,0 +1,1 @@
+ /home/fernando/Documentos/tcc1/item_expo/.dart_tool/flutter_build/4aa7969e5c069bb514c24edd4a1e1228/native_assets.yaml: 
