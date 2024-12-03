@@ -147,7 +147,7 @@
     },
     {
       "name": "item_expo_theme_package",
-      "rootUri": "../../item_expo_theme_package",
+      "rootUri": "file:///home/fernando/.pub-cache/git/app_item_expo_theme_package-985bb36ea3a4444cc3a25e962f56892a292660e3/",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -398,7 +398,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-12-02T23:04:05.939096Z",
+  "generated": "2024-12-03T12:40:05.302403Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///usr/bin/flutter",

@@ -31,7 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
   item_expo_theme_package:
-    path: ../item_expo_theme_package
+    git:
+      url: git@github.com:carbran/app_item_expo_theme_package.git
+      ref: main
   cupertino_icons: ^1.0.6
   flutter_localizations:
     sdk: flutter

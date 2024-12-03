@@ -184,9 +184,11 @@ packages:
   item_expo_theme_package:
     dependency: "direct main"
     description:
-      path: "../item_expo_theme_package"
-      relative: true
-    source: path
+      path: "."
+      ref: main
+      resolved-ref: "985bb36ea3a4444cc3a25e962f56892a292660e3"
+      url: "git@github.com:carbran/app_item_expo_theme_package.git"
+    source: git
     version: "0.0.1"
   leak_tracker:
     dependency: transitive
