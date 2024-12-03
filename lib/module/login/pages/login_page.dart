@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:item_expo/module/login/controllers/login_controller.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
 import 'package:item_expo/utils/validators.dart';
+import 'package:item_expo_theme_package/item_expo_colors.dart';
 import 'package:lottie/lottie.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -14,13 +15,14 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.9,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
+            Padding(
                 padding: _padding,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
