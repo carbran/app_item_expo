@@ -4,20 +4,12 @@
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxhdpi_item_expo_icon.png.flat",
-        "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxhdpi/item_expo_icon.png"
-    },
-    {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-hdpi/ic_launcher.png"
     },
     {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxxhdpi_item_expo_icon.png.flat",
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxxhdpi/item_expo_icon.png"
-    },
-    {
-        "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/drawable-v21_launch_background.xml.flat",
-        "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/drawable-v21/launch_background.xml"
     },
     {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -28,6 +20,10 @@
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xhdpi/item_expo_icon.png"
     },
     {
+        "merged": "com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-mdpi_item_expo_icon.png.flat",
+        "source": "com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-mdpi/item_expo_icon.png"
+    },
+    {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xhdpi/ic_launcher.png"
     },
@@ -36,8 +32,32 @@
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xhdpi_item_expo_icon.png.flat",
+        "source": "com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xhdpi/item_expo_icon.png"
+    },
+    {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-mdpi_item_expo_icon.png.flat",
         "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-mdpi/item_expo_icon.png"
+    },
+    {
+        "merged": "com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-hdpi_item_expo_icon.png.flat",
+        "source": "com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-hdpi/item_expo_icon.png"
+    },
+    {
+        "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxhdpi_item_expo_icon.png.flat",
+        "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxhdpi/item_expo_icon.png"
+    },
+    {
+        "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/drawable-v21_launch_background.xml.flat",
+        "source": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-main-7:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxhdpi_item_expo_icon.png.flat",
+        "source": "com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxhdpi/item_expo_icon.png"
+    },
+    {
+        "merged": "com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-xxxhdpi_item_expo_icon.png.flat",
+        "source": "com.fernandobrandao.itemexpo.item_expo.app-main-7:/mipmap-xxxhdpi/item_expo_icon.png"
     },
     {
         "merged": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/mipmap-hdpi_item_expo_icon.png.flat",
