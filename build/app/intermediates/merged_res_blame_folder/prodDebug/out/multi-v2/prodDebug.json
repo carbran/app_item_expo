@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/values-iw_values-iw.arsc.flat",
+            "outputFile": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/values-in_values-in.arsc.flat",
             "map": [
                 {
-                    "source": "/home/fernando/.gradle/caches/transforms-3/284a410c767ad6c7a2b0ffc8d8d85981/transformed/core-1.6.0/res/values-iw/values-iw.xml",
+                    "source": "/home/fernando/.gradle/caches/transforms-3/284a410c767ad6c7a2b0ffc8d8d85981/transformed/core-1.6.0/res/values-in/values-in.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -31,10 +31,10 @@
             ]
         },
         {
-            "outputFile": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/values-in_values-in.arsc.flat",
+            "outputFile": "/home/fernando/.gradle/daemon/7.6.3/com.fernandobrandao.itemexpo.item_expo.app-merged_res-15:/values-iw_values-iw.arsc.flat",
             "map": [
                 {
-                    "source": "/home/fernando/.gradle/caches/transforms-3/284a410c767ad6c7a2b0ffc8d8d85981/transformed/core-1.6.0/res/values-in/values-in.xml",
+                    "source": "/home/fernando/.gradle/caches/transforms-3/284a410c767ad6c7a2b0ffc8d8d85981/transformed/core-1.6.0/res/values-iw/values-iw.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

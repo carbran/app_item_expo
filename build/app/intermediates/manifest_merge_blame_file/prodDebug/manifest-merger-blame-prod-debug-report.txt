@@ -41,7 +41,7 @@
 33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 33-->[androidx.core:core:1.6.0] /home/fernando/.gradle/caches/transforms-3/284a410c767ad6c7a2b0ffc8d8d85981/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 34        android:debuggable="true"
-35        android:icon="@mipmap/ic_launcher"
+35        android:icon="@mipmap/item_expo_icon"
 36        android:label="item_expo" >
 37        <activity
 38            android:name="com.fernandobrandao.itemexpo.item_expo.MainActivity"
