@@ -5,7 +5,8 @@ import 'package:item_expo/module/login/pages/login_page.dart';
 abstract class Routes {
   static const home = '/home';
   static const login = '/login';
-  static const cadastro = '/cadastro';
+  static const register = '/register';
+  static const sendCode = '/sendCode';
 }
 
 class AppPages {
