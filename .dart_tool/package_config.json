@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "ansicolor",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/ansicolor-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/archive-3.6.1",
       "packageUri": "lib/",
@@ -50,6 +56,12 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/csslib-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
@@ -93,7 +105,7 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/flutter_lints-3.0.2",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/flutter_lints-4.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
@@ -102,6 +114,12 @@
       "rootUri": "file:///usr/bin/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_svg",
@@ -128,6 +146,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "html",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/html-0.15.5",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "http",
       "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/http-1.2.2",
       "packageUri": "lib/",
@@ -138,6 +162,12 @@
       "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "image",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/image-4.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "intl",
@@ -171,9 +201,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/lints-3.0.0",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/lints-4.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "logger",
@@ -344,6 +374,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "universal_io",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "vector_graphics",
       "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/vector_graphics-1.1.15",
       "packageUri": "lib/",
@@ -392,13 +428,19 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "yaml",
+      "rootUri": "file:///home/fernando/.pub-cache/hosted/pub.dev/yaml-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "item_expo",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-12-03T12:40:05.302403Z",
+  "generated": "2024-12-03T23:46:52.828109Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///usr/bin/flutter",

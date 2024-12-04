@@ -17,6 +17,7 @@ INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/Andr
 INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml:1:1-45:12
 INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml:1:1-45:12
 MERGED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml:1:1-45:12
+MERGED from [:flutter_native_splash] /home/fernando/Documentos/tcc1/item_expo/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:shared_preferences_android] /home/fernando/Documentos/tcc1/item_expo/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/fernando/.gradle/caches/transforms-3/e75666861c19ddc5e1b02c228a732c3d/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.datastore:datastore:1.0.0] /home/fernando/.gradle/caches/transforms-3/ea5100a471779cdfb4c61328eadd49f2/transformed/jetified-datastore-1.0.0/AndroidManifest.xml:17:1-24:12
@@ -70,6 +71,8 @@ uses-sdk
 INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/fernando/Documentos/tcc1/item_expo/android/app/src/main/AndroidManifest.xml
+MERGED from [:flutter_native_splash] /home/fernando/Documentos/tcc1/item_expo/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_native_splash] /home/fernando/Documentos/tcc1/item_expo/build/flutter_native_splash/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] /home/fernando/Documentos/tcc1/item_expo/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] /home/fernando/Documentos/tcc1/item_expo/build/shared_preferences_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.datastore:datastore-preferences:1.0.0] /home/fernando/.gradle/caches/transforms-3/e75666861c19ddc5e1b02c228a732c3d/transformed/jetified-datastore-preferences-1.0.0/AndroidManifest.xml:20:5-22:41
