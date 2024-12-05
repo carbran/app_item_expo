@@ -1,4 +1,4 @@
-#Tue Dec 03 20:59:47 BRT 2024
+#Thu Dec 05 10:25:55 BRT 2024
 base.0=/home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/dex/prodDebug/mergeExtDexProdDebug/classes.dex
 base.1=/home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/dex/prodDebug/mergeLibDexProdDebug/0/classes.dex
 base.2=/home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/dex/prodDebug/mergeProjectDexProdDebug/0/classes.dex
