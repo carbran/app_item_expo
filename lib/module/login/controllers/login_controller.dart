@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/utils/errors.dart';
 
@@ -8,9 +9,11 @@ class LoginController extends GetxController {
   Rx<bool> waiting = Rx(false);
   Rx<bool> hidePass = Rx(true);
 
+  late final TextEditingController passwordController;
+
   @override
   void onInit() {
-    // TODO: implement onInit
+    passwordController = TextEditingController();
     super.onInit();
   }
 

@@ -60,50 +60,51 @@ class LoginPage extends GetView<LoginController> {
                     style: const TextStyle(color: ItemExpoColors.black),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) => emailValidator!(value!),
+                    onChanged: (value) => controller.email = value,
                   ),
                 ),
-                Obx(
-                  () {
-                    return Padding(
-                      padding: _padding,
-                      child: TextFormField(
-                        controller: TextEditingController(),
-                        decoration: InputDecoration(
-                          hintText: 'Senha',
-                          filled: true,
-                          fillColor: ItemExpoColors.white,
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30.0),
-                            ),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: ItemExpoColors.neonPink,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30.0),
-                            ),
-                          ),
-                          suffixIcon: TextButton(
-                            onPressed: () {
-                              controller.hidePass.value =
-                                  !controller.hidePass.value;
-                            },
-                            child: Icon(
-                              !controller.hidePass.value
-                                  ? Icons.visibility_off_outlined
-                                  : Icons.visibility_outlined,
-                            ),
+                Obx(() {
+                  return Padding(
+                    padding: _padding,
+                    child: TextFormField(
+                      controller: controller.passwordController,
+                      decoration: InputDecoration(
+                        hintText: 'Senha',
+                        filled: true,
+                        fillColor: ItemExpoColors.white,
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
                           ),
                         ),
-                        obscureText: controller.hidePass.value,
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: ItemExpoColors.neonPink,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
+                        ),
+                        suffixIcon: TextButton(
+                          onPressed: () {
+                            controller.hidePass.value =
+                                !controller.hidePass.value;
+                          },
+                          child: Icon(
+                            !controller.hidePass.value
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                          ),
+                        ),
                       ),
-                    );
-                  },
-                ),
+                      obscureText: controller.hidePass.value,
+                      validator: (value) => passwordValidator!(value),
+                      onChanged: (value) => controller.password = value,
+                    ),
+                  );
+                }),
                 Padding(
                   padding: _padding,
                   child: Obx(
