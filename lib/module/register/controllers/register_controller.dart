@@ -40,4 +40,12 @@ class RegisterController extends GetxController {
       }
     }
   }
+
+  void showPassword() {
+    hidePass.value = !hidePass.value;
+  }
+
+  void showConfirmPassword() {
+    hideConfirmPass.value = !hideConfirmPass.value;
+  }
 }

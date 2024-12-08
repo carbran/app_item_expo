@@ -151,10 +151,7 @@ class RegisterPage extends GetView<RegisterController> {
                               ),
                             ),
                             suffixIcon: TextButton(
-                              onPressed: () {
-                                controller.hidePass.value =
-                                    !controller.hidePass.value;
-                              },
+                              onPressed: () => controller.showPassword(),
                               child: Icon(
                                 !controller.hidePass.value
                                     ? Icons.visibility_off_outlined
@@ -195,10 +192,7 @@ class RegisterPage extends GetView<RegisterController> {
                               ),
                             ),
                             suffixIcon: TextButton(
-                              onPressed: () {
-                                controller.hideConfirmPass.value =
-                                    !controller.hideConfirmPass.value;
-                              },
+                              onPressed: () => controller.showConfirmPassword(),
                               child: Icon(
                                 !controller.hideConfirmPass.value
                                     ? Icons.visibility_off_outlined

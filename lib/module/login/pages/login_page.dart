@@ -88,10 +88,7 @@ class LoginPage extends GetView<LoginController> {
                           ),
                         ),
                         suffixIcon: TextButton(
-                          onPressed: () {
-                            controller.hidePass.value =
-                                !controller.hidePass.value;
-                          },
+                          onPressed: () => controller.showPassword(),
                           child: Icon(
                             !controller.hidePass.value
                                 ? Icons.visibility_off_outlined
@@ -114,7 +111,7 @@ class LoginPage extends GetView<LoginController> {
                               backgroundColor: WidgetStatePropertyAll(
                                   ItemExpoColors.darkPurple),
                             ),
-                            onPressed: controller.login,
+                            onPressed: () => controller.login(),
                             child: const Text(
                               'Entrar',
                               style: TextStyle(
@@ -131,7 +128,7 @@ class LoginPage extends GetView<LoginController> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Get.toNamed(Routes.sendCode),
+                  onPressed: () => Get.toNamed(Routes.forgotPassword),
                   child: const Text('Esqueceu a senha'),
                 ),
                 TextButton(

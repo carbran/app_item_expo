@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:item_expo/module/login/repositories/user_repository.dart';
+import 'package:item_expo/routes/app_routes.dart';
+import 'package:item_expo/services/storage_service.dart';
 import 'package:item_expo/utils/errors.dart';
 
 class LoginController extends GetxController {
@@ -11,9 +14,15 @@ class LoginController extends GetxController {
 
   late final TextEditingController passwordController;
 
+  late final UserRepository userRepository;
+  late final StorageService storageService;
+
   @override
   void onInit() {
     passwordController = TextEditingController();
+    userRepository = Get.put(UserRepository());
+    storageService = Get.put(StorageService());
+    email = storageService.get('email');
     super.onInit();
   }
 
@@ -28,5 +37,18 @@ class LoginController extends GetxController {
       handleError(error, marginBottom: 80);
       return;
     }
+    try {
+      await storageService.set('email', email);
+      await userRepository.login(email!, password!);
+      waiting.value = true;
+      Get.offAllNamed(Routes.home);
+    } catch (error) {
+      waiting.value = false;
+      handleError(error, marginBottom: 80);
+    }
+  }
+
+  void showPassword() {
+    hidePass.value = !hidePass.value;
   }
 }
