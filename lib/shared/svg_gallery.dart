@@ -3,5 +3,6 @@ class SvgGallery {
 }
 
 class AnimGallery {
-  static const String loader = 'assets/anim/loader_item_expo3.json';
+  static const String loader = 'assets/anim/loader_item_expo.json';
+  static const String confirmation = 'assets/anim/confirmation.json';
 }
