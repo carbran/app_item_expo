@@ -9,9 +9,9 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-    appBar: AppBar(title: Text('NewPasswordPage')),
+    appBar: AppBar(title: const Text('NewPasswordPage')),
 
-    body: SafeArea(
+    body: const SafeArea(
       child: Text('NewPasswordController'))
     );
   }
