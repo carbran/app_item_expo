@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:item_expo/module/login/models/user_model.dart';
+import 'package:item_expo/services/api_service.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,23 +39,19 @@ class StorageService extends GetxService {
   }
 
   bool isLogged() {
-    return false;
+    String? isLogged = storage.getString('user');
+    if (isLogged == null) return false;
+    UserModel user = UserModel.fromJson(jsonDecode(isLogged));
+    ApiService apiService = Get.find();
+    apiService.addHeaders({'Authorization': 'Bearer ${user.token}'});
+    return true;
   }
 
-  // bool isLogged() {
-  //   String? isLogged = storage.getString('usuario');
-  //   if (isLogged == null) return false;
-  //   UsuarioModel usuario = UsuarioModel.fromJson(jsonDecode(isLogged));
-  //   ApiService apiService = Get.find();
-  //   apiService.addHeaders({'Authorization': 'Bearer ${usuario.token}'});
-  //   return true;
-  // }
-
-  // UsuarioModel? getUser() {
-  //   String? user = storage.getString('usuario');
-  //   if (user != null) {
-  //     return UsuarioModel.fromJson(jsonDecode(user));
-  //   }
-  //   return null;
-  // }
+  UserModel? getUser() {
+    String? user = storage.getString('user');
+    if (user != null) {
+      return UserModel.fromJson(jsonDecode(user));
+    }
+    return null;
+  }
 }
