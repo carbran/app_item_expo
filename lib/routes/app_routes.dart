@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:item_expo/module/confirmation/bindings/confirmation_binding.dart';
 import 'package:item_expo/module/confirmation/pages/confirmation_page.dart';
 import 'package:item_expo/module/forgot_password/pages/new_password_page.dart';
+import 'package:item_expo/module/home/bindings/home_binding.dart';
+import 'package:item_expo/module/home/pages/home_page.dart';
 import 'package:item_expo/module/login/bindings/login_binding.dart';
 import 'package:item_expo/module/login/pages/login_page.dart';
 import 'package:item_expo/module/register/bindings/register_binding.dart';
@@ -47,11 +49,11 @@ class AppPages {
       page: () => const NewPasswordPage(),
       binding: ForgotPasswordBinding(),
     ),
-    // GetPage(
-    //   name: Routes.home,
-    //   page: () => const HomePage(),
-    //   binding: HomeBinding(),
-    // ),
+    GetPage(
+      name: Routes.home,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
+    ),
     // GetPage(
     //   name: Routes.collection,
     //   page: () => const CollectionPage(),
