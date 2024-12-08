@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/app_config.dart';
 import 'package:item_expo/routes/app_routes.dart';
+import 'package:item_expo/services/api_service.dart';
 import 'package:item_expo/services/storage_service.dart';
 import 'package:item_expo_theme_package/item_expo_theme.dart';
 import 'package:logger/logger.dart';
@@ -23,11 +24,11 @@ void initializeMain(AppConfig appConfig) async {
 
   Get.put(Logger(printer: SimplePrinter()), permanent: true);
   Get.put(StorageService(), permanent: true);
-  // ApiService api = Get.put(ApiService(), permanent: true);
+  ApiService api = Get.put(ApiService(), permanent: true);
 
-  // await api.dio.post('/version').then((value) => null).catchError((e) {
-  //   api.offlineMode = true;
-  // });
+  await api.dio.post('/version').then((value) => null).catchError((e) {
+    api.offlineMode = true;
+  });
 
   runApp(MyApp());
 }

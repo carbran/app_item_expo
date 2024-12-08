@@ -34,6 +34,12 @@ class UserModel {
     data['email'] = email;
     data['phone'] = phone;
     data['password'] = password;
+    data['token'] = token;
+    if (expiresIn != null) {
+      data['expiresIn'] = expiresIn!.toString();
+    } else {
+      data['expiresIn'] = null;
+    }
     return data;
   }
 }
