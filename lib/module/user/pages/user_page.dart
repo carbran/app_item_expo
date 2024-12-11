@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/user/controllers/user_controller.dart';
+import 'package:item_expo/routes/app_routes.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
+import 'package:item_expo/utils/helpers.dart';
 import 'package:item_expo/utils/validators.dart';
 import 'package:item_expo_theme_package/item_expo_colors.dart';
 import 'package:lottie/lottie.dart';
@@ -32,7 +34,7 @@ class UserPage extends GetView<UserController> {
           child: SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
             child: Form(
-              key: controller.formKey,
+              key: controller.formUserKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +114,8 @@ class UserPage extends GetView<UserController> {
                       style: const TextStyle(color: ItemExpoColors.black),
                       keyboardType: TextInputType.phone,
                       validator: (value) => telValidator!(value!),
-                      onChanged: (value) => controller.user.phone = value,
+                      onChanged: (value) =>
+                          controller.user.phone = Helpers.onlyNumbers(value),
                     ),
                   ),
                   Padding(
@@ -162,12 +165,57 @@ class UserPage extends GetView<UserController> {
                               ),
                               onPressed: () => controller.updateUser(),
                               child: const Text(
-                                'Alterar',
+                                'Alterar usuário',
                                 style: TextStyle(
                                     color: ItemExpoColors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16),
                               ),
+                            )
+                          : Lottie.asset(
+                              AnimGallery.loader,
+                              width: 60,
+                              height: 52,
+                            ),
+                    ),
+                  ),
+                  Padding(
+                    padding: _padding,
+                    child: Obx(
+                      () => !controller.waiting.value
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ElevatedButton(
+                                  style: const ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(
+                                        ItemExpoColors.darkPurple),
+                                  ),
+                                  onPressed: () =>
+                                      Get.toNamed(Routes.changePassword),
+                                  child: const Text(
+                                    'Alterar senha',
+                                    style: TextStyle(
+                                        color: ItemExpoColors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  style: const ButtonStyle(
+                                    backgroundColor: WidgetStatePropertyAll(
+                                        ItemExpoColors.red),
+                                  ),
+                                  onPressed: () => controller.logout(),
+                                  child: const Text(
+                                    'Logout',
+                                    style: TextStyle(
+                                        color: ItemExpoColors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                ),
+                              ],
                             )
                           : Lottie.asset(
                               AnimGallery.loader,

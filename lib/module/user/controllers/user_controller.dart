@@ -7,13 +7,15 @@ import 'package:item_expo/services/profile_service.dart';
 import 'package:item_expo/utils/errors.dart';
 
 class UserController extends GetxController {
-  final formKey = GlobalKey<FormState>();
+  final formUserKey = GlobalKey<FormState>();
+  final formPasswordKey = GlobalKey<FormState>();
 
   late final UserRepository userRepository;
   late UserModel user;
   late ProfileService profile = Get.find();
 
   Rx<bool> waiting = Rx(false);
+  Rx<bool> hideOldPass = Rx(true);
   Rx<bool> hidePass = Rx(true);
   Rx<bool> hideConfirmPass = Rx(true);
 
@@ -21,20 +23,22 @@ class UserController extends GetxController {
   String? newPassword;
   String? confirmPassword;
 
+  late final TextEditingController oldPasswordController;
   late final TextEditingController passwordController;
   late final TextEditingController confirmPasswordController;
 
   @override
   void onInit() {
+    oldPasswordController = TextEditingController();
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
-    userRepository = UserRepository();
+    userRepository = Get.put(UserRepository());
     user = UserModel();
     super.onInit();
   }
 
   void updateUser() async {
-    if (formKey.currentState!.validate()) {
+    if (formUserKey.currentState!.validate()) {
       try {
         waiting.value = true;
 
@@ -45,12 +49,12 @@ class UserController extends GetxController {
         user.token ??= profile.user?.token;
         user.expiresIn ??= profile.user?.expiresIn;
 
-        bool resposta = await userRepository.updateUser(user);
+        bool response = await userRepository.updateUser(user);
         profile.resetProfile();
         waiting.value = false;
-        if (resposta) {
+        if (response) {
           Get.offNamed(Routes.confirmation, arguments: {
-            'type': Get.arguments,
+            'type': 'update_my_user',
             'message': 'Dados alterados com sucesso!'
           });
         }
@@ -62,7 +66,7 @@ class UserController extends GetxController {
   }
 
   void deleteUser() async {
-    if (formKey.currentState!.validate()) {
+    if (formUserKey.currentState!.validate()) {
       try {
         waiting.value = true;
         bool resposta = await userRepository.deleteUser(user);
@@ -80,8 +84,8 @@ class UserController extends GetxController {
     }
   }
 
-  void changePassword() async {
-    if (formKey.currentState!.validate()) {
+  void updatePassword() async {
+    if (formPasswordKey.currentState!.validate()) {
       try {
         if (waiting.value) return;
         waiting.value = true;
@@ -112,7 +116,7 @@ class UserController extends GetxController {
           return;
         }
         Map<String, dynamic> isPasswordCorrect = await userRepository
-            .changePassword(user.email, oldPassword, newPassword);
+            .changePassword(profile.user!.email, oldPassword, newPassword);
         if (isPasswordCorrect.containsKey('error')) {
           waiting.value = false;
           Map<String, dynamic> e = {
@@ -121,15 +125,20 @@ class UserController extends GetxController {
           handleError(e, marginBottom: 80);
           return;
         }
+        waiting.value = false;
         Get.toNamed(Routes.confirmation, arguments: {
           'type': 'change_password',
-          'message': isPasswordCorrect['sucesso'].toString()
+          'message': isPasswordCorrect['message'].toString()
         });
       } catch (e) {
         waiting.value = false;
         handleError(e, marginBottom: 80);
       }
     }
+  }
+
+  void showOldPassword() {
+    hideOldPass.value = !hideOldPass.value;
   }
 
   void showPassword() {
