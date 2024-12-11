@@ -96,6 +96,7 @@ class LoginPage extends GetView<LoginController> {
                           ),
                         ),
                       ),
+                      style: const TextStyle(color: ItemExpoColors.black),
                       obscureText: controller.hidePass.value,
                       validator: (value) => passwordValidator!(value),
                       onChanged: (value) => controller.password = value,

@@ -159,6 +159,7 @@ class RegisterPage extends GetView<RegisterController> {
                               ),
                             ),
                           ),
+                          style: const TextStyle(color: ItemExpoColors.black),
                           obscureText: controller.hidePass.value,
                           validator: (value) => passwordValidator!(value),
                           onChanged: (value) =>
@@ -201,6 +202,7 @@ class RegisterPage extends GetView<RegisterController> {
                               ),
                             ),
                           ),
+                          style: const TextStyle(color: ItemExpoColors.black),
                           obscureText: controller.hideConfirmPass.value,
                           validator: (value) => passwordValidator!(value),
                           onChanged: (value) =>

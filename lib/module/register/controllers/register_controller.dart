@@ -26,6 +26,8 @@ class RegisterController extends GetxController {
   void onInit() {
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    userRepository = Get.put(UserRepository());
+    user = UserModel();
     super.onInit();
   }
 

@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:item_expo/module/bars/bindings/bars_binding.dart';
 import 'package:item_expo/module/bars/pages/bars_page.dart';
+import 'package:item_expo/module/user/pages/change_password_page.dart';
+import 'package:item_expo/module/collection/bindings/collection_binding.dart';
+import 'package:item_expo/module/collection/pages/collection_page.dart';
 import 'package:item_expo/module/confirmation/bindings/confirmation_binding.dart';
 import 'package:item_expo/module/confirmation/pages/confirmation_page.dart';
 import 'package:item_expo/module/forgot_password/pages/new_password_page.dart';
@@ -30,6 +33,7 @@ abstract class Routes {
   static const item = '/item';
   static const user = '/user';
   static const bars = '/bars';
+  static const changePassword = '/changePassword';
 }
 
 class AppPages {
@@ -83,10 +87,15 @@ class AppPages {
       page: () => const BarsPage(),
       binding: BarsBinding(),
     ),
-    // GetPage(
-    //   name: Routes.collection,
-    //   page: () => const CollectionPage(),
-    //   binding: CollectionBinding(),
-    // ),
+    GetPage(
+      name: Routes.collection,
+      page: () => const CollectionPage(),
+      binding: CollectionBinding(),
+    ),
+    GetPage(
+      name: Routes.changePassword,
+      page: () => const ChangePasswordPage(),
+      binding: UserBinding(),
+    ),
   ];
 }

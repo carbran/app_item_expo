@@ -166,8 +166,11 @@ class UserRepository {
       String? email, String? oldPassword, String? newPassword) async {
     try {
       final response =
-          await apiService.dio.post('/auth/update-password', data: {
-        'credentials': {'email': email, 'password': oldPassword},
+          await apiService.dio.post('/user/update-password', data: {
+        'credentials': {
+          'email': email,
+          'password': oldPassword,
+        },
         'new_password': newPassword
       });
 
