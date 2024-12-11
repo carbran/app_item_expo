@@ -4,6 +4,6 @@ import 'package:item_expo/module/forgot_password/controllers/forgot_password_con
 class ForgotPasswordBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ForgotPasswordController>(() => ForgotPasswordController());
+    Get.put(ForgotPasswordController(), permanent: true);
   }
 }

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:item_expo/module/confirmation/controllers/confirmation_controller.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
 import 'package:item_expo_theme_package/item_expo_colors.dart';
-import 'package:item_expo_theme_package/item_expo_text.dart';
 import 'package:lottie/lottie.dart';
 
 class ConfirmationPage extends GetView<ConfirmationController> {
@@ -17,19 +16,24 @@ class ConfirmationPage extends GetView<ConfirmationController> {
       backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
+          width: Get.width * 0.8,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Lottie.asset(
                 AnimGallery.confirmation,
-                width: 100,
-                height: 100,
+                width: 130,
+                height: 130,
               ),
               Text(
                 controller.message,
-                style: ItemExpoTextStyle.bodyBold
-                    .copyWith(color: ItemExpoColors.textMedium),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: ItemExpoColors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
               Padding(
                 padding: _padding,

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:item_expo/module/login/repositories/user_repository.dart';
 import 'package:item_expo/routes/app_routes.dart';
 import 'package:item_expo/utils/errors.dart';
+import 'package:item_expo/utils/snackbar.dart';
 
 class ForgotPasswordController extends GetxController {
   final formKeyUserValidation = GlobalKey<FormState>();
@@ -27,9 +28,18 @@ class ForgotPasswordController extends GetxController {
   final RxInt minutes = 0.obs;
   final RxInt seconds = 0.obs;
 
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+  late final TextEditingController confirmPasswordController;
+  late final TextEditingController codeController;
+
   @override
   void onInit() {
     userRepository = Get.put(UserRepository());
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+    codeController = TextEditingController();
     super.onInit();
   }
 
@@ -54,7 +64,6 @@ class ForgotPasswordController extends GetxController {
   void onPressResendCode() async {
     try {
       startTime();
-
       await userRepository.getAccessCode(email);
     } catch (error) {
       handleError(error, marginBottom: 80);
@@ -70,7 +79,7 @@ class ForgotPasswordController extends GetxController {
   }
 
   void sendAccessCode() async {
-    if (formKeyUserValidation.currentState?.validate() ?? false) {
+    if (formKeyUserValidation.currentState!.validate()) {
       try {
         waiting.value = true;
         bool response = await userRepository.getAccessCode(email);
@@ -85,7 +94,41 @@ class ForgotPasswordController extends GetxController {
     }
   }
 
-  void forgotPassword() async {
-    
+  void newPassword() async {
+    if (formKeyNewPassword.currentState!.validate()) {
+      try {
+        if (password == confirmPassword) {
+          Get.offNamed(Routes.validationCode);
+        } else {
+          showSnackbar(
+              context: Get.context!,
+              message:
+                  'Ops! As senhas não coincidem. Por favor, tente novamente.',
+              marginBottom: 80);
+        }
+      } catch (e) {
+        waiting.value = false;
+        handleError(e, marginBottom: 80);
+      }
+    }
+  }
+
+  void updatePassword() async {
+    if (formKeyValidationCode.currentState!.validate()) {
+      try {
+        waiting.value = true;
+        bool resposta = await userRepository.updatePassword(code, password);
+        waiting.value = false;
+        if (resposta) {
+          Get.offNamed(Routes.confirmation, arguments: {
+            'type': 'forgout_password',
+            'message': 'Senha alterada com sucesso.'
+          });
+        }
+      } catch (e) {
+        waiting.value = false;
+        handleError(e, marginBottom: 80);
+      }
+    }
   }
 }

@@ -26,16 +26,28 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
       backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
+          width: Get.width * 0.8,
           child: Form(
+            key: controller.formKeyUserValidation,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Informe seu e-mail para criar uma nova senha:'),
+                const Center(
+                  child: Text(
+                    'Informe seu e-mail para criar uma nova senha:',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ItemExpoColors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: _padding,
                   child: TextFormField(
-                    controller: TextEditingController(),
+                    controller: controller.emailController,
                     decoration: const InputDecoration(
                       hintText: 'E-mail',
                       filled: true,
@@ -59,7 +71,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                     style: const TextStyle(color: ItemExpoColors.black),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) => emailValidator!(value!),
-                    onChanged: (value) => controller.email,
+                    onChanged: (value) => controller.email = value,
                   ),
                 ),
                 Padding(
@@ -71,7 +83,7 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                               backgroundColor: WidgetStatePropertyAll(
                                   ItemExpoColors.darkPurple),
                             ),
-                            onPressed: () => controller.forgotPassword,
+                            onPressed: () => controller.sendAccessCode(),
                             child: const Text(
                               'Continuar',
                               style: TextStyle(

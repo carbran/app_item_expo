@@ -15,9 +15,9 @@ class ConfirmationController extends GetxController {
   void goToPage() {
     switch (type) {
       case 'update_my_user':
-        Get.offNamed(Routes.home);
+        Get.offNamed(Routes.bars);
       case 'change_password':
-        Get.offNamed(Routes.home);
+        Get.offNamed(Routes.bars);
       default:
         Get.offNamed(Routes.login);
     }
