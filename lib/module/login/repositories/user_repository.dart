@@ -38,12 +38,13 @@ class UserRepository {
     }
   }
 
-  Future<bool> getAccessCode(String email) async {
+  Future<bool> updateUser(UserModel user) async {
     try {
       final response = await apiService.dio
-          .post('/user/get-access-code', data: {'email': email});
+          .post('/user/update', data: user.toJson());
 
       if (response.statusCode == 200) {
+        storageService.set('user', user);
         return true;
       } else {
         return false;
@@ -64,6 +65,25 @@ class UserRepository {
         'access_code': code,
         'new_password': password,
       });
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } on DioException catch (e) {
+      if (e.response == null) {
+        throw (unknownErrorException(e));
+      }
+
+      throw (responseDioException(e));
+    }
+  }
+
+  Future<bool> getAccessCode(String email) async {
+    try {
+      final response = await apiService.dio
+          .post('/user/get-access-code', data: {'email': email});
 
       if (response.statusCode == 200) {
         return true;
@@ -112,26 +132,6 @@ class UserRepository {
       await apiService.dio.post('/auth/logout');
       apiService.delHeaders();
       Get.offAllNamed(Routes.login);
-    } on DioException catch (e) {
-      if (e.response == null) {
-        throw (unknownErrorException(e));
-      }
-
-      throw (responseDioException(e));
-    }
-  }
-
-  Future<bool> updateUser(UserModel user) async {
-    try {
-      final response = await apiService.dio
-          .post('/user/update', data: user.toJson());
-
-      if (response.statusCode == 200) {
-        storageService.set('user', user);
-        return true;
-      } else {
-        return false;
-      }
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));

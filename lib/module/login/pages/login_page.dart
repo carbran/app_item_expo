@@ -129,10 +129,13 @@ class LoginPage extends GetView<LoginController> {
                 ),
                 TextButton(
                   onPressed: () => Get.toNamed(Routes.forgotPassword),
-                  child: const Text('Esqueceu a senha'),
+                  child: const Text('Esqueceu a senha?'),
                 ),
                 TextButton(
-                  onPressed: () => Get.toNamed(Routes.register),
+                  onPressed: () => Get.toNamed(
+                    Routes.register,
+                    arguments: 'create',
+                  ),
                   child: const Text('Criar conta'),
                 ),
               ],

@@ -41,7 +41,7 @@ class LoginController extends GetxController {
       await storageService.set('email', email);
       await userRepository.login(email!, password!);
       waiting.value = true;
-      Get.offAllNamed(Routes.home);
+      Get.offAllNamed(Routes.bars);
     } catch (error) {
       waiting.value = false;
       handleError(error, marginBottom: 80);

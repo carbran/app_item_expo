@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: ItemExpoTheme.lightTheme,
       darkTheme: ItemExpoTheme.darkTheme,
       themeMode: ThemeMode.system,
-      initialRoute: storageService.isLogged() ? Routes.home : Routes.login,
+      initialRoute: storageService.isLogged() ? Routes.bars : Routes.login,
       getPages: AppPages.pages,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [

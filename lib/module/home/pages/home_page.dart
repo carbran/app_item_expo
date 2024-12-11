@@ -18,38 +18,6 @@ class HomePage extends GetView<HomeController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: ItemExpoColors.darkPurple,
-        iconSize: 40,
-        selectedItemColor: ItemExpoColors.white,
-        unselectedItemColor: ItemExpoColors.white,
-        selectedFontSize: 0,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: controller.goToPage(),
-        currentIndex: controller.indexPage.value,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_rounded,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_rounded,
-            ),
-            label: 'Add Item',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_rounded,
-            ),
-            label: 'Usuário',
-          ),
-        ],
-      ),
       body: const Center(
         child: SizedBox(
           child: Column(

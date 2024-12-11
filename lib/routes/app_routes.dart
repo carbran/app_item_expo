@@ -1,15 +1,22 @@
 import 'package:get/get.dart';
+import 'package:item_expo/module/bars/bindings/bars_binding.dart';
+import 'package:item_expo/module/bars/pages/bars_page.dart';
 import 'package:item_expo/module/confirmation/bindings/confirmation_binding.dart';
 import 'package:item_expo/module/confirmation/pages/confirmation_page.dart';
 import 'package:item_expo/module/forgot_password/pages/new_password_page.dart';
+import 'package:item_expo/module/forgot_password/pages/validation_code_page.dart';
 import 'package:item_expo/module/home/bindings/home_binding.dart';
 import 'package:item_expo/module/home/pages/home_page.dart';
+import 'package:item_expo/module/item/bindings/item_binding.dart';
+import 'package:item_expo/module/item/pages/item_page.dart';
 import 'package:item_expo/module/login/bindings/login_binding.dart';
 import 'package:item_expo/module/login/pages/login_page.dart';
 import 'package:item_expo/module/register/bindings/register_binding.dart';
 import 'package:item_expo/module/register/pages/register_page.dart';
 import 'package:item_expo/module/forgot_password/bindings/forgot_password_binding.dart';
 import 'package:item_expo/module/forgot_password/pages/forgot_password_page.dart';
+import 'package:item_expo/module/user/bindings/user_binding.dart';
+import 'package:item_expo/module/user/pages/user_page.dart';
 
 abstract class Routes {
   static const login = '/login';
@@ -17,9 +24,12 @@ abstract class Routes {
   static const forgotPassword = '/forgotPassword';
   static const confirmation = '/confirmation';
   static const newPassword = '/newPassword';
+  static const validationCode = '/validationCode';
   static const home = '/home';
   static const collection = '/collection';
   static const item = '/item';
+  static const user = '/user';
+  static const bars = '/bars';
 }
 
 class AppPages {
@@ -50,19 +60,33 @@ class AppPages {
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
+        name: Routes.validationCode,
+        page: () => const ValidationCodePage(),
+        binding: ForgotPasswordBinding()),
+    GetPage(
       name: Routes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.item,
+      page: () => const ItemPage(),
+      binding: ItemBinding(),
+    ),
+    GetPage(
+      name: Routes.user,
+      page: () => const UserPage(),
+      binding: UserBinding(),
+    ),
+    GetPage(
+      name: Routes.bars,
+      page: () => const BarsPage(),
+      binding: BarsBinding(),
     ),
     // GetPage(
     //   name: Routes.collection,
     //   page: () => const CollectionPage(),
     //   binding: CollectionBinding(),
-    // ),
-    // GetPage(
-    //   name: Routes.item,
-    //   page: () => const ItemPage(),
-    //   binding: ItemBinding(),
     // ),
   ];
 }
