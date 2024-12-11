@@ -145,8 +145,8 @@ class UserRepository {
 
   Future<bool> deleteUser(UserModel user) async {
     try {
-      final response = await apiService.dio
-          .post('/user/excluir-user', data: user.toJson());
+      final response =
+          await apiService.dio.post('/user/excluir-user', data: user.toJson());
       if (response.statusCode == 200) {
         storageService.del('user');
         return true;
