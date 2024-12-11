@@ -42,4 +42,12 @@ class UserModel {
     }
     return data;
   }
+
+  Map<String, dynamic> toJsonUser() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    return data;
+  }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
@@ -21,8 +23,8 @@ class UserRepository {
 
   Future<bool> register(UserModel user) async {
     try {
-      final response = await apiService.dio
-          .post('/user/register', data: user.toJson());
+      final response =
+          await apiService.dio.post('/user/register', data: user.toJson());
 
       if (response.statusCode == 201) {
         return true;
@@ -40,8 +42,8 @@ class UserRepository {
 
   Future<bool> updateUser(UserModel user) async {
     try {
-      final response = await apiService.dio
-          .post('/user/update', data: user.toJson());
+      final response =
+          await apiService.dio.post('/user/update', data: user.toJsonUser());
 
       if (response.statusCode == 200) {
         storageService.set('user', user);
@@ -114,7 +116,7 @@ class UserRepository {
       final resUser = await apiService.dio.post('/auth/me');
       user = UserModel.fromJson(resUser.data);
       user.token = auth.accessToken;
-      user.expiresIn = auth.expiresIn;      
+      user.expiresIn = auth.expiresIn;
       storageService.set('user', user);
       return resUser.data;
     } on DioException catch (e) {
@@ -141,29 +143,30 @@ class UserRepository {
     }
   }
 
-  // Future<bool> deleteUser(UserModel user) async {
-  //   try {
-  //     final response = await apiService.dio
-  //         .post('/user/excluir-user', data: user.toJson());
-  //     if (response.statusCode == 200) {
-  //       storageService.del('user');
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } on DioException catch (e) {
-  //     if (e.response == null) {
-  //       throw (unknownErrorException(e));
-  //     }
+  Future<bool> deleteUser(UserModel user) async {
+    try {
+      final response = await apiService.dio
+          .post('/user/excluir-user', data: user.toJson());
+      if (response.statusCode == 200) {
+        storageService.del('user');
+        return true;
+      } else {
+        return false;
+      }
+    } on DioException catch (e) {
+      if (e.response == null) {
+        throw (unknownErrorException(e));
+      }
 
-  //     throw (responseDioException(e));
-  //   }
-  // }
+      throw (responseDioException(e));
+    }
+  }
 
   Future<Map<String, dynamic>> changePassword(
       String? email, String? oldPassword, String? newPassword) async {
     try {
-      final response = await apiService.dio.post('/auth/update-password', data: {
+      final response =
+          await apiService.dio.post('/auth/update-password', data: {
         'credentials': {'email': email, 'password': oldPassword},
         'new_password': newPassword
       });
@@ -175,5 +178,17 @@ class UserRepository {
       }
       throw (responseDioException(e));
     }
+  }
+
+  UserModel? getUser() {
+    if (storageService.isLogged()) {
+      UserModel? user = UserModel();
+      final json = storageService.get('user');
+      if (json != null) {
+        user = UserModel.fromJson(jsonDecode(json));
+      }
+      return user;
+    }
+    return null;
   }
 }

@@ -4,9 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:item_expo/utils/snackbar.dart';
 import 'package:item_expo_theme_package/item_expo_colors.dart';
 
-void handleError(e,
-    {
-    double marginBottom = 80}) {
+void handleError(e, {double marginBottom = 80}) {
   if (e != null && e is Map) {
     if (e.containsKey('code') &&
         (e['code'] == 500 || e['code'] == 0) &&
