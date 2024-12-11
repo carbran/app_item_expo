@@ -62,7 +62,7 @@ class RegisterPage extends GetView<RegisterController> {
                       style: const TextStyle(color: ItemExpoColors.black),
                       keyboardType: TextInputType.name,
                       validator: (value) => nameValidator!(value!),
-                      onChanged: (value) => controller.name,
+                      onChanged: (value) => controller.user.name = value,
                     ),
                   ),
                   Padding(
@@ -92,7 +92,7 @@ class RegisterPage extends GetView<RegisterController> {
                       style: const TextStyle(color: ItemExpoColors.black),
                       keyboardType: TextInputType.phone,
                       validator: (value) => telValidator!(value!),
-                      onChanged: (value) => controller.telefone,
+                      onChanged: (value) => controller.user.phone = value,
                     ),
                   ),
                   Padding(
@@ -122,7 +122,7 @@ class RegisterPage extends GetView<RegisterController> {
                       style: const TextStyle(color: ItemExpoColors.black),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) => emailValidator!(value!),
-                      onChanged: (value) => controller.email,
+                      onChanged: (value) => controller.user.email = value,
                     ),
                   ),
                   Obx(
@@ -161,7 +161,8 @@ class RegisterPage extends GetView<RegisterController> {
                           ),
                           obscureText: controller.hidePass.value,
                           validator: (value) => passwordValidator!(value),
-                          onChanged: (value) => controller.password = value,
+                          onChanged: (value) =>
+                              controller.user.password = value,
                         ),
                       );
                     },
@@ -202,8 +203,7 @@ class RegisterPage extends GetView<RegisterController> {
                           ),
                           obscureText: controller.hideConfirmPass.value,
                           validator: (value) => passwordValidator!(value),
-                          onChanged: (value) =>
-                              controller.confirmPassword = value,
+                          onChanged: (value) => controller.confirmPassword = value,
                         ),
                       );
                     },
@@ -217,7 +217,9 @@ class RegisterPage extends GetView<RegisterController> {
                                 backgroundColor: WidgetStatePropertyAll(
                                     ItemExpoColors.darkPurple),
                               ),
-                              onPressed: () => controller.register(),
+                              onPressed: () => Get.arguments == 'create'
+                                  ? controller.register()
+                                  : controller.updateUser(),
                               child: const Text(
                                 'Cadastrar',
                                 style: TextStyle(
