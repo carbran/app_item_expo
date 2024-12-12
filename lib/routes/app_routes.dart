@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:item_expo/module/bars/bindings/bars_binding.dart';
 import 'package:item_expo/module/bars/pages/bars_page.dart';
+import 'package:item_expo/module/item/pages/cam_page.dart';
 import 'package:item_expo/module/user/pages/change_password_page.dart';
 import 'package:item_expo/module/collection/bindings/collection_binding.dart';
 import 'package:item_expo/module/collection/pages/collection_page.dart';
@@ -34,6 +35,7 @@ abstract class Routes {
   static const user = '/user';
   static const bars = '/bars';
   static const changePassword = '/changePassword';
+  static const cam = '/cam';
 }
 
 class AppPages {
@@ -96,6 +98,10 @@ class AppPages {
       name: Routes.changePassword,
       page: () => const ChangePasswordPage(),
       binding: UserBinding(),
+    ),
+    GetPage(
+      name: Routes.cam,
+      page: () => const CamPage(),
     ),
   ];
 }

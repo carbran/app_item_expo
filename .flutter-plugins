@@ -1,5 +1,10 @@
 # This is a generated file; do not edit or check into version control.
+camera=/home/fernando/.pub-cache/hosted/pub.dev/camera-0.11.0+2/
+camera_android_camerax=/home/fernando/.pub-cache/hosted/pub.dev/camera_android_camerax-0.6.8+2/
+camera_avfoundation=/home/fernando/.pub-cache/hosted/pub.dev/camera_avfoundation-0.9.17+5/
+camera_web=/home/fernando/.pub-cache/hosted/pub.dev/camera_web-0.3.5/
 flutter_native_splash=/home/fernando/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.1/
+flutter_plugin_android_lifecycle=/home/fernando/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22/
 path_provider_linux=/home/fernando/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/home/fernando/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
 shared_preferences=/home/fernando/.pub-cache/hosted/pub.dev/shared_preferences-2.3.3/

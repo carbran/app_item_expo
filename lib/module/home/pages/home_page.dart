@@ -88,7 +88,8 @@ class HomePage extends GetView<HomeController> {
                 childCount: 100,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
+                crossAxisCount: 2,
+              ),
             ),
           ],
         ),
