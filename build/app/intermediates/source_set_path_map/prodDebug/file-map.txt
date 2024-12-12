@@ -14,4 +14,5 @@ com.fernandobrandao.itemexpo.item_expo.app-prod-12 /home/fernando/Documentos/tcc
 com.fernandobrandao.itemexpo.item_expo.app-mergeProdDebugResources-13 /home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/incremental/prodDebug/mergeProdDebugResources/merged.dir
 com.fernandobrandao.itemexpo.item_expo.app-mergeProdDebugResources-14 /home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/incremental/prodDebug/mergeProdDebugResources/stripped.dir
 com.fernandobrandao.itemexpo.item_expo.app-merged_res-15 /home/fernando/Documentos/tcc1/item_expo/build/app/intermediates/merged_res/prodDebug
-com.fernandobrandao.itemexpo.item_expo.app-packaged_res-16 /home/fernando/Documentos/tcc1/item_expo/build/shared_preferences_android/intermediates/packaged_res/debug
+com.fernandobrandao.itemexpo.item_expo.app-packaged_res-16 /home/fernando/Documentos/tcc1/item_expo/build/flutter_native_splash/intermediates/packaged_res/debug
+com.fernandobrandao.itemexpo.item_expo.app-packaged_res-17 /home/fernando/Documentos/tcc1/item_expo/build/shared_preferences_android/intermediates/packaged_res/debug

@@ -17,7 +17,6 @@ class HomePage extends GetView<HomeController> {
             SliverAppBar(
               floating: true,
               expandedHeight: 200,
-              backgroundColor: ItemExpoColors.darkPurple,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
                 background: Row(
@@ -85,7 +84,7 @@ class HomePage extends GetView<HomeController> {
                 (context, index) => ListTile(
                   title: Text('Item #$index'),
                 ),
-                childCount: 100,
+                childCount: 2,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

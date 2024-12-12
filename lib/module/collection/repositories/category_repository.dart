@@ -1,28 +1,28 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:item_expo/module/item/models/collection_model.dart';
+import 'package:item_expo/module/collection/models/category_model.dart';
 import 'package:item_expo/services/api_service.dart';
 import 'package:item_expo/services/storage_service.dart';
 import 'package:item_expo/utils/errors.dart';
 import 'package:logger/logger.dart';
 
-class CollectionRepository {
+class CategoryRepository {
   late final StorageService storageService;
   late final ApiService apiService;
   late final Logger logger;
 
-  CollectionRepository() {
+  CategoryRepository() {
     apiService = Get.find();
     storageService = Get.find();
     logger = Get.find();
   }
 
-  Future<List<Collection>> fetchCollections() async {
+  Future<List<Category>> fetchCategories() async {
     try {
-      final response = await apiService.dio.get('/collections');
+      final response = await apiService.dio.get('/categories');
       
       return (response.data as List)
-          .map((collection) => Collection.fromJson(collection))
+          .map((category) => Category.fromJson(category))
           .toList();
     } on DioException catch (e) {
       if (e.response == null) {
@@ -32,11 +32,11 @@ class CollectionRepository {
     }
   }
 
-  Future<Collection> createCollection(Collection collection) async {
+  Future<Category> createCategory(Category category) async {
     try {
-      final response = await apiService.dio.post('/collections', data: collection.toJson());
+      final response = await apiService.dio.post('/categories', data: category.toJson());
 
-      return Collection.fromJson(response.data);
+      return Category.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -45,11 +45,11 @@ class CollectionRepository {
     }
   }
 
-  Future<Collection> updateCollection(int id, Collection collection) async {
+  Future<Category> updateCategory(int id, Category category) async {
     try {
-      final response = await apiService.dio.put('/collections/$id', data: collection.toJson());
+      final response = await apiService.dio.put('/categories/$id', data: category.toJson());
 
-      return Collection.fromJson(response.data);
+      return Category.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -58,9 +58,9 @@ class CollectionRepository {
     }
   }
 
-  Future<void> deleteCollection(int id) async {
+  Future<void> deleteCategory(int id) async {
     try {
-      await apiService.dio.delete('/collections/$id');
+      await apiService.dio.delete('/categories/$id');
 
     } on DioException catch (e) {
       if (e.response == null) {

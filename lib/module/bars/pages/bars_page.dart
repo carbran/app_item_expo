@@ -11,10 +11,7 @@ class BarsPage extends GetView<BarsController> {
       body: Obx(() => controller.pages[controller.currentIndex.value]),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          // backgroundColor: ItemExpoColors.darkPurple,
           iconSize: 40,
-          // selectedItemColor: ItemExpoColors.white,
-          // unselectedItemColor: ItemExpoColors.white,
           selectedFontSize: 0,
           showSelectedLabels: false,
           showUnselectedLabels: false,

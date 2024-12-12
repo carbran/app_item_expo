@@ -1,4 +1,4 @@
-import 'package:item_expo/module/item/models/item_picture_model.dart';
+import 'package:item_expo/module/collection/models/item_picture_model.dart';
 
 class Item {
   final int id;

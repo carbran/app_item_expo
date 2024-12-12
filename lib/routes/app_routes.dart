@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:item_expo/module/bars/bindings/bars_binding.dart';
 import 'package:item_expo/module/bars/pages/bars_page.dart';
-import 'package:item_expo/module/item/pages/cam_page.dart';
+import 'package:item_expo/module/item/bindings/item_binding.dart';
+import 'package:item_expo/module/item/pages/item_page.dart';
 import 'package:item_expo/module/user/pages/change_password_page.dart';
 import 'package:item_expo/module/collection/bindings/collection_binding.dart';
 import 'package:item_expo/module/collection/pages/collection_page.dart';
@@ -11,8 +12,6 @@ import 'package:item_expo/module/forgot_password/pages/new_password_page.dart';
 import 'package:item_expo/module/forgot_password/pages/validation_code_page.dart';
 import 'package:item_expo/module/home/bindings/home_binding.dart';
 import 'package:item_expo/module/home/pages/home_page.dart';
-import 'package:item_expo/module/item/bindings/item_binding.dart';
-import 'package:item_expo/module/item/pages/item_page.dart';
 import 'package:item_expo/module/login/bindings/login_binding.dart';
 import 'package:item_expo/module/login/pages/login_page.dart';
 import 'package:item_expo/module/register/bindings/register_binding.dart';
@@ -75,11 +74,6 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.item,
-      page: () => const ItemPage(),
-      binding: ItemBinding(),
-    ),
-    GetPage(
       name: Routes.user,
       page: () => const UserPage(),
       binding: UserBinding(),
@@ -95,13 +89,14 @@ class AppPages {
       binding: CollectionBinding(),
     ),
     GetPage(
+      name: Routes.item,
+      page: () => const ItemPage(),
+      binding: ItemBinding(),
+    ),
+    GetPage(
       name: Routes.changePassword,
       page: () => const ChangePasswordPage(),
       binding: UserBinding(),
-    ),
-    GetPage(
-      name: Routes.cam,
-      page: () => const CamPage(),
     ),
   ];
 }
