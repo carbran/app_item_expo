@@ -13,7 +13,6 @@ class ConfirmationPage extends GetView<ConfirmationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.8,
@@ -38,17 +37,13 @@ class ConfirmationPage extends GetView<ConfirmationController> {
               Padding(
                 padding: _padding,
                 child: ElevatedButton(
-                  style: const ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(ItemExpoColors.darkPurple),
-                  ),
                   onPressed: () => controller.goToPage(),
                   child: const Text(
                     'Voltar',
                     style: TextStyle(
-                        color: ItemExpoColors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),

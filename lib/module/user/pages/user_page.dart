@@ -22,12 +22,10 @@ class UserPage extends GetView<UserController> {
         title: const Text('Dados do Usuário'),
         backgroundColor: ItemExpoColors.darkPurple,
         titleTextStyle: const TextStyle(
-          color: ItemExpoColors.white,
           fontWeight: FontWeight.bold,
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.8,
@@ -43,7 +41,8 @@ class UserPage extends GetView<UserController> {
                     padding: _padding,
                     child: TextFormField(
                       controller: TextEditingController(
-                          text: controller.profile.user?.name),
+                        text: controller.profile.user?.name,
+                      ),
                       decoration: const InputDecoration(
                         labelText: '\n Nome',
                         labelStyle: TextStyle(
@@ -122,7 +121,8 @@ class UserPage extends GetView<UserController> {
                     padding: _padding,
                     child: TextFormField(
                       controller: TextEditingController(
-                          text: controller.profile.user?.email),
+                        text: controller.profile.user?.email,
+                      ),
                       decoration: const InputDecoration(
                         labelText: '\n E-mail',
                         labelStyle: TextStyle(
@@ -159,17 +159,13 @@ class UserPage extends GetView<UserController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: WidgetStatePropertyAll(
-                                    ItemExpoColors.darkPurple),
-                              ),
                               onPressed: () => controller.updateUser(),
                               child: const Text(
                                 'Alterar usuário',
                                 style: TextStyle(
-                                    color: ItemExpoColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             )
                           : Lottie.asset(
@@ -187,16 +183,11 @@ class UserPage extends GetView<UserController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ElevatedButton(
-                                  style: const ButtonStyle(
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        ItemExpoColors.darkPurple),
-                                  ),
                                   onPressed: () =>
                                       Get.toNamed(Routes.changePassword),
                                   child: const Text(
                                     'Alterar senha',
                                     style: TextStyle(
-                                        color: ItemExpoColors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16),
                                   ),
@@ -204,15 +195,16 @@ class UserPage extends GetView<UserController> {
                                 ElevatedButton(
                                   style: const ButtonStyle(
                                     backgroundColor: WidgetStatePropertyAll(
-                                        ItemExpoColors.red),
+                                      ItemExpoColors.red,
+                                    ),
                                   ),
                                   onPressed: () => controller.logout(),
                                   child: const Text(
                                     'Logout',
                                     style: TextStyle(
-                                        color: ItemExpoColors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
                               ],

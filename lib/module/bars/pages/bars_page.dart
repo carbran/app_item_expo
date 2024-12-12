@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/bars/controllers/bars_controller.dart';
-import 'package:item_expo_theme_package/item_expo_colors.dart';
 
 class BarsPage extends GetView<BarsController> {
   const BarsPage({super.key});
@@ -10,13 +9,12 @@ class BarsPage extends GetView<BarsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() => controller.pages[controller.currentIndex.value]),
-      backgroundColor: ItemExpoColors.lightPurple,
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          backgroundColor: ItemExpoColors.darkPurple,
+          // backgroundColor: ItemExpoColors.darkPurple,
           iconSize: 40,
-          selectedItemColor: ItemExpoColors.white,
-          unselectedItemColor: ItemExpoColors.white,
+          // selectedItemColor: ItemExpoColors.white,
+          // unselectedItemColor: ItemExpoColors.white,
           selectedFontSize: 0,
           showSelectedLabels: false,
           showUnselectedLabels: false,

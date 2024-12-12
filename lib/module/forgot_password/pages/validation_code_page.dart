@@ -23,7 +23,6 @@ class ValidationCodePage extends GetView<ForgotPasswordController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
         child: SingleChildScrollView(
@@ -79,17 +78,13 @@ class ValidationCodePage extends GetView<ForgotPasswordController> {
                       Obx(
                         () => !controller.waiting.value
                             ? ElevatedButton(
-                                style: const ButtonStyle(
-                                  backgroundColor: WidgetStatePropertyAll(
-                                      ItemExpoColors.darkPurple),
-                                ),
                                 onPressed: () => controller.updatePassword(),
                                 child: const Text(
                                   'Continuar',
                                   style: TextStyle(
-                                      color: ItemExpoColors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               )
                             : Lottie.asset(

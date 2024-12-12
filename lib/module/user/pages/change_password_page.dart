@@ -23,7 +23,6 @@ class ChangePasswordPage extends GetView<UserController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.8,
@@ -66,6 +65,7 @@ class ChangePasswordPage extends GetView<UserController> {
                                 !controller.hideOldPass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -108,6 +108,7 @@ class ChangePasswordPage extends GetView<UserController> {
                                 !controller.hidePass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -150,6 +151,7 @@ class ChangePasswordPage extends GetView<UserController> {
                                 !controller.hideConfirmPass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -167,17 +169,13 @@ class ChangePasswordPage extends GetView<UserController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: WidgetStatePropertyAll(
-                                    ItemExpoColors.darkPurple),
-                              ),
                               onPressed: () => controller.updatePassword(),
                               child: const Text(
                                 'Alterar senha',
                                 style: TextStyle(
-                                    color: ItemExpoColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             )
                           : Lottie.asset(

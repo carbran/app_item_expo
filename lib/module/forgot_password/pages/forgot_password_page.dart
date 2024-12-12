@@ -23,7 +23,6 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.8,
@@ -79,17 +78,13 @@ class ForgotPasswordPage extends GetView<ForgotPasswordController> {
                   child: Obx(
                     () => !controller.waiting.value
                         ? ElevatedButton(
-                            style: const ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll(
-                                  ItemExpoColors.darkPurple),
-                            ),
                             onPressed: () => controller.sendAccessCode(),
                             child: const Text(
                               'Continuar',
                               style: TextStyle(
-                                  color: ItemExpoColors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
                           )
                         : Lottie.asset(

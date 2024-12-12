@@ -23,7 +23,6 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -74,6 +73,7 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
                                 !controller.hidePass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -115,6 +115,7 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
                                 !controller.hideConfirmPass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -131,17 +132,13 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: WidgetStatePropertyAll(
-                                    ItemExpoColors.darkPurple),
-                              ),
                               onPressed: () => controller.newPassword(),
                               child: const Text(
                                 'Continuar',
                                 style: TextStyle(
-                                    color: ItemExpoColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             )
                           : Lottie.asset(

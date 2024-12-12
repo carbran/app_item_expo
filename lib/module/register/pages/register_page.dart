@@ -23,7 +23,6 @@ class RegisterPage extends GetView<RegisterController> {
           fontSize: 16.0,
         ),
       ),
-      backgroundColor: ItemExpoColors.lightPurple,
       body: Center(
         child: SizedBox(
           width: Get.width * 0.8,
@@ -156,6 +155,7 @@ class RegisterPage extends GetView<RegisterController> {
                                 !controller.hidePass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -199,6 +199,7 @@ class RegisterPage extends GetView<RegisterController> {
                                 !controller.hideConfirmPass.value
                                     ? Icons.visibility_off_outlined
                                     : Icons.visibility_outlined,
+                                color: ItemExpoColors.black,
                               ),
                             ),
                           ),
@@ -216,17 +217,13 @@ class RegisterPage extends GetView<RegisterController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              style: const ButtonStyle(
-                                backgroundColor: WidgetStatePropertyAll(
-                                    ItemExpoColors.darkPurple),
-                              ),
                               onPressed: () => controller.register(),
                               child: const Text(
                                 'Cadastrar',
                                 style: TextStyle(
-                                    color: ItemExpoColors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             )
                           : Lottie.asset(
