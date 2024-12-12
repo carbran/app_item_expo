@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:item_expo/services/profile_service.dart';
 
 class HomeController extends GetxController {
-  Rx<int> indexPage = Rx(0);
 
+  final ProfileService profile = Get.find();
+  
   
 }
