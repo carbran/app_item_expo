@@ -47,7 +47,7 @@ class RegisterController extends GetxController {
         bool response = await userRepository.register(user);
         waiting.value = false;
         if (response) {
-          Get.back(result: 'sucess');
+          Get.back(result: 'success');
         }
       } catch (error) {
         waiting.value = false;
@@ -63,7 +63,7 @@ class RegisterController extends GetxController {
         bool response = await userRepository.updateUser(user);
         waiting.value = false;
         if (response) {
-          Get.back(result: 'sucess');
+          Get.back(result: 'success');
         }
       } catch (error) {
         waiting.value = false;
@@ -115,7 +115,7 @@ class RegisterController extends GetxController {
         }
         Get.toNamed(Routes.confirmation, arguments: {
           'type': 'change_password',
-          'message': isPasswordCorrect['sucesso'].toString()
+          'message': isPasswordCorrect['successo'].toString()
         });
       } catch (e) {
         waiting.value = false;

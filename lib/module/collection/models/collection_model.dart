@@ -1,27 +1,27 @@
 import 'package:item_expo/module/collection/models/category_model.dart';
 
-class Collection {
-  final int id;
-  final String name;
-  final int userId;
-  final List<Category>? categories;
+class CollectionModel {
+  int? id;
+  String? name;
+  int? userId;
+  List<CategoryModel>? categories;
 
-  Collection({
-    required this.id,
-    required this.name,
-    required this.userId,
+  CollectionModel({
+    this.id,
+    this.name,
+    this.userId,
     this.categories,
   });
 
-  factory Collection.fromJson(Map<String, dynamic> json) {
-    return Collection(
+  factory CollectionModel.fromJson(Map<String, dynamic> json) {
+    return CollectionModel(
       id: json['id'],
       name: json['name'],
       userId: json['user_id'],
       categories: json['categories'] != null
-          ? List<Category>.from(
+          ? List<CategoryModel>.from(
               json['categories'].map(
-                (category) => Category.fromJson(category),
+                (category) => CategoryModel.fromJson(category),
               ),
             )
           : null,

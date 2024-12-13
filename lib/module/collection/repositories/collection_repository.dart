@@ -17,12 +17,17 @@ class CollectionRepository {
     logger = Get.find();
   }
 
-  Future<List<Collection>> fetchCollections() async {
+  Future<List<CollectionModel>> fetchCollections({int id = 0}) async {
     try {
-      final response = await apiService.dio.get('/collections');
-      
+      final dynamic response;
+      if (id > 0) {
+        response = await apiService.dio.get('/collections/$id');
+      } else {
+        response = await apiService.dio.get('/collections');
+      }
+
       return (response.data as List)
-          .map((collection) => Collection.fromJson(collection))
+          .map((collection) => CollectionModel.fromJson(collection))
           .toList();
     } on DioException catch (e) {
       if (e.response == null) {
@@ -32,11 +37,16 @@ class CollectionRepository {
     }
   }
 
-  Future<Collection> createCollection(Collection collection) async {
+  Future<bool> createCollection(CollectionModel collection) async {
     try {
-      final response = await apiService.dio.post('/collections', data: collection.toJson());
+      final response =
+          await apiService.dio.post('/collections', data: collection.toJson());
 
-      return Collection.fromJson(response.data);
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -45,11 +55,13 @@ class CollectionRepository {
     }
   }
 
-  Future<Collection> updateCollection(int id, Collection collection) async {
+  Future<CollectionModel> updateCollection(
+      int id, CollectionModel collection) async {
     try {
-      final response = await apiService.dio.put('/collections/$id', data: collection.toJson());
+      final response = await apiService.dio
+          .put('/collections/$id', data: collection.toJson());
 
-      return Collection.fromJson(response.data);
+      return CollectionModel.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -61,7 +73,6 @@ class CollectionRepository {
   Future<void> deleteCollection(int id) async {
     try {
       await apiService.dio.delete('/collections/$id');
-
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));

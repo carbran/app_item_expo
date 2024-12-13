@@ -17,12 +17,12 @@ class CategoryRepository {
     logger = Get.find();
   }
 
-  Future<List<Category>> fetchCategories() async {
+  Future<List<CategoryModel>> fetchCategories() async {
     try {
       final response = await apiService.dio.get('/categories');
       
       return (response.data as List)
-          .map((category) => Category.fromJson(category))
+          .map((category) => CategoryModel.fromJson(category))
           .toList();
     } on DioException catch (e) {
       if (e.response == null) {
@@ -32,11 +32,11 @@ class CategoryRepository {
     }
   }
 
-  Future<Category> createCategory(Category category) async {
+  Future<CategoryModel> createCategory(CategoryModel category) async {
     try {
       final response = await apiService.dio.post('/categories', data: category.toJson());
 
-      return Category.fromJson(response.data);
+      return CategoryModel.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -45,11 +45,11 @@ class CategoryRepository {
     }
   }
 
-  Future<Category> updateCategory(int id, Category category) async {
+  Future<CategoryModel> updateCategory(int id, CategoryModel category) async {
     try {
       final response = await apiService.dio.put('/categories/$id', data: category.toJson());
 
-      return Category.fromJson(response.data);
+      return CategoryModel.fromJson(response.data);
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));

@@ -1,11 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/login/repositories/user_repository.dart';
 import 'package:item_expo/routes/app_routes.dart';
 import 'package:item_expo/utils/errors.dart';
-import 'package:item_expo/utils/snackbar.dart';
 
 class ForgotPasswordController extends GetxController {
   final formKeyUserValidation = GlobalKey<FormState>();
@@ -100,11 +99,15 @@ class ForgotPasswordController extends GetxController {
         if (password == confirmPassword) {
           Get.offNamed(Routes.validationCode);
         } else {
-          showSnackbar(
-              context: Get.context!,
-              message:
-                  'Ops! As senhas não coincidem. Por favor, tente novamente.',
-              marginBottom: 80);
+          Get.snackbar(
+            'Aviso',
+            'As senhas não coincidem. Por favor, tente novamente.',
+            snackPosition: SnackPosition.BOTTOM,
+            margin: const EdgeInsets.only(bottom: 60),
+            backgroundColor: Colors.yellow,
+            colorText: Colors.black,
+            isDismissible: true,
+          );
         }
       } catch (e) {
         waiting.value = false;
@@ -122,7 +125,7 @@ class ForgotPasswordController extends GetxController {
         if (resposta) {
           Get.offNamed(Routes.confirmation, arguments: {
             'type': 'forgout_password',
-            'message': 'Senha alterada com sucesso.'
+            'message': 'Senha alterada com successo.'
           });
         }
       } catch (e) {

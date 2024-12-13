@@ -12,6 +12,9 @@ class ProfileService extends GetxService {
   late final ApiService apiService = Get.find();
   RxBool offlineMode = false.obs;
   RxBool waiting = false.obs;
+  Rx<int> itemsCount = 0.obs;
+  Rx<int> collectionsCount = 0.obs;
+  Rx<String> categories = ''.obs;
 
   late final Rx<UserModel?> _user = Rx<UserModel?>(null);
   UserModel? get user => _user.value;

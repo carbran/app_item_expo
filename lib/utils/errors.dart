@@ -1,30 +1,31 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:item_expo/utils/snackbar.dart';
-import 'package:item_expo_theme_package/item_expo_colors.dart';
 
 void handleError(e, {double marginBottom = 80}) {
   if (e != null && e is Map) {
     if (e.containsKey('code') &&
         (e['code'] == 500 || e['code'] == 0) &&
         !e.containsKey('data')) {
-      showSnackbar(
-          context: Get.context!,
-          message: 'Erro de conexão. Por favor, tente novamente.',
-          marginBottom: marginBottom,
-          colorSnack: ItemExpoColors.red);
+      Get.snackbar('Erro de conexão', 'Por favor, tente novamente.',
+          snackPosition: SnackPosition.BOTTOM,
+          margin: const EdgeInsets.only(bottom: 60),
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
     } else {
-      showSnackbar(
-          context: Get.context!,
-          message: e['data']['message'],
-          marginBottom: marginBottom);
+      Get.snackbar('Erro', e['data']['message'],
+          snackPosition: SnackPosition.BOTTOM,
+          margin: const EdgeInsets.only(bottom: 60),
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
     }
   } else {
-    showSnackbar(
-        context: Get.context!,
-        message: 'Ocorreu um erro',
-        marginBottom: marginBottom);
+    Get.snackbar('Erro', 'Ocorreu um erro desconhecido.',
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.only(bottom: 60),
+        backgroundColor: Colors.red,
+        colorText: Colors.white);
   }
 }
 
