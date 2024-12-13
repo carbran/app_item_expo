@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:item_expo/module/bars/bindings/bars_binding.dart';
 import 'package:item_expo/module/bars/pages/bars_page.dart';
+import 'package:item_expo/module/create_collection/bindings/create_collection_controller.dart';
+import 'package:item_expo/module/create_collection/pages/create_collection_page.dart';
 import 'package:item_expo/module/update_collection/bindings/update_collection_controller.dart';
 import 'package:item_expo/module/update_collection/pages/update_collection_page.dart';
 import 'package:item_expo/module/item/bindings/item_binding.dart';
@@ -32,6 +34,7 @@ abstract class Routes {
   static const validationCode = '/validationCode';
   static const home = '/home';
   static const collection = '/collection';
+  static const createCollection = '/createCollection';
   static const updateCollection = '/updateCollection';
   static const item = '/item';
   static const user = '/user';
@@ -95,6 +98,11 @@ class AppPages {
       name: Routes.updateCollection,
       page: () => const UpdateCollectionPage(),
       binding: UpdateCollectionBinding(),
+    ),
+    GetPage(
+      name: Routes.createCollection,
+      page: () => const CreateCollectionPage(),
+      binding: CreateCollectionBinding(),
     ),
     GetPage(
       name: Routes.item,

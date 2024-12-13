@@ -107,10 +107,10 @@ class CollectionPage extends GetView<CollectionController> {
                           });
                         },
                         onLongPress: () {
-                          Get.toNamed(Routes.updateCollection, arguments: {
-                            'type': 'update',
-                            'collection_id': collection.id
-                          });
+                          Get.toNamed(
+                            Routes.updateCollection,
+                            arguments: collection.id,
+                          );
                         },
                         child: Card(
                           margin: const EdgeInsets.all(12),

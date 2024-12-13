@@ -19,11 +19,9 @@ class CollectionModel {
       name: json['name'],
       userId: json['user_id'],
       categories: json['categories'] != null
-          ? List<CategoryModel>.from(
-              json['categories'].map(
-                (category) => CategoryModel.fromJson(category),
-              ),
-            )
+          ? (json['categories'] as List<dynamic>)
+              .map((e) => CategoryModel.fromJson(e))
+              .toList()
           : null,
     );
   }

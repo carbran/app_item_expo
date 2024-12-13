@@ -2,11 +2,11 @@ import 'package:item_expo/module/collection/models/category_model.dart';
 import 'package:item_expo/module/collection/models/collection_model.dart';
 
 class CollectionCategory {
-  final int id;
-  final int collectionId;
-  final int categoryId;
-  final Collection? collection;
-  final Category? category;
+  int? id;
+  int? collectionId;
+  int? categoryId;
+  CollectionModel? collection;
+  CategoryModel? category;
 
   CollectionCategory({
     required this.id,
@@ -22,10 +22,10 @@ class CollectionCategory {
       collectionId: json['collection_id'],
       categoryId: json['category_id'],
       collection: json['collection'] != null
-          ? Collection.fromJson(json['collection'])
+          ? CollectionModel.fromJson(json['collection'])
           : null,
       category: json['category'] != null
-          ? Category.fromJson(json['category'])
+          ? CategoryModel.fromJson(json['category'])
           : null,
     );
   }
