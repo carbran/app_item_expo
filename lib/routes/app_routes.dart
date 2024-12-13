@@ -14,8 +14,6 @@ import 'package:item_expo/module/confirmation/bindings/confirmation_binding.dart
 import 'package:item_expo/module/confirmation/pages/confirmation_page.dart';
 import 'package:item_expo/module/forgot_password/pages/new_password_page.dart';
 import 'package:item_expo/module/forgot_password/pages/validation_code_page.dart';
-import 'package:item_expo/module/home/bindings/home_binding.dart';
-import 'package:item_expo/module/home/pages/home_page.dart';
 import 'package:item_expo/module/login/bindings/login_binding.dart';
 import 'package:item_expo/module/login/pages/login_page.dart';
 import 'package:item_expo/module/register/bindings/register_binding.dart';
@@ -32,7 +30,6 @@ abstract class Routes {
   static const confirmation = '/confirmation';
   static const newPassword = '/newPassword';
   static const validationCode = '/validationCode';
-  static const home = '/home';
   static const collection = '/collection';
   static const createCollection = '/createCollection';
   static const updateCollection = '/updateCollection';
@@ -71,13 +68,9 @@ class AppPages {
       binding: ForgotPasswordBinding(),
     ),
     GetPage(
-        name: Routes.validationCode,
-        page: () => const ValidationCodePage(),
-        binding: ForgotPasswordBinding()),
-    GetPage(
-      name: Routes.home,
-      page: () => const HomePage(),
-      binding: HomeBinding(),
+      name: Routes.validationCode,
+      page: () => const ValidationCodePage(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: Routes.user,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/collection/controllers/collection_controller.dart';
-import 'package:item_expo/module/home/widgets/text_with_ellipsis.dart';
+import 'package:item_expo/module/collection/widgets/text_with_ellipsis.dart';
 import 'package:item_expo/routes/app_routes.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
 import 'package:item_expo_theme_package/item_expo_colors.dart';
