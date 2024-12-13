@@ -96,8 +96,6 @@ class CollectionRepository {
       final response = await apiService.dio
           .put('/collections/$id', data: collection.toJson());
 
-      // return CollectionModel.fromJson(response.data);
-
       if (response.statusCode == 200) {
         return true;
       } else {

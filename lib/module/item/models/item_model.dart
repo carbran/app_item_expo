@@ -1,25 +1,25 @@
-import 'package:item_expo/module/collection/models/item_picture_model.dart';
+import 'package:item_expo/module/item/models/item_picture_model.dart';
 
-class Item {
-  final int id;
-  final int collectionId;
-  final String title;
-  final String? subtitle;
-  final String? author;
-  final DateTime acquisitionDate;
-  final int? condition;
-  final String? size;
-  final int? sizeType;
-  final int? amount;
-  final List<ItemPictureModel>? pictures;
+class ItemModel {
+  int? id;
+  int? collectionId;
+  String? title;
+  String? subtitle;
+  String? author;
+  DateTime? acquisitionDate;
+  int? condition;
+  String? size;
+  int? sizeType;
+  int? amount;
+  List<ItemPictureModel>? pictures;
 
-  Item({
-    required this.id,
-    required this.collectionId,
-    required this.title,
+  ItemModel({
+    this.id,
+    this.collectionId,
+    this.title,
     this.subtitle,
     this.author,
-    required this.acquisitionDate,
+    this.acquisitionDate,
     this.condition,
     this.size,
     this.sizeType,
@@ -27,8 +27,8 @@ class Item {
     this.pictures,
   });
 
-  factory Item.fromJson(Map<String, dynamic> json) {
-    return Item(
+  factory ItemModel.fromJson(Map<String, dynamic> json) {
+    return ItemModel(
       id: json['id'],
       collectionId: json['collection_id'],
       title: json['title'],
@@ -53,7 +53,7 @@ class Item {
       'title': title,
       'subtitle': subtitle,
       'author': author,
-      'acquisition_date': acquisitionDate.toIso8601String(),
+      'acquisition_date': acquisitionDate?.toIso8601String(),
       'condition': condition,
       'size': size,
       'size_type': sizeType,

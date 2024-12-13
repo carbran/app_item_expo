@@ -1,4 +1,6 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/register/controllers/register_controller.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
@@ -16,9 +18,7 @@ class RegisterPage extends GetView<RegisterController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cadastrar Usuário'),
-        backgroundColor: ItemExpoColors.darkPurple,
         titleTextStyle: const TextStyle(
-          color: ItemExpoColors.white,
           fontWeight: FontWeight.bold,
           fontSize: 16.0,
         ),
@@ -68,6 +68,8 @@ class RegisterPage extends GetView<RegisterController> {
                     padding: _padding,
                     child: TextFormField(
                       controller: TextEditingController(),
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly,
+                        TelefoneInputFormatter()],                      
                       decoration: const InputDecoration(
                         hintText: 'Telefone',
                         filled: true,

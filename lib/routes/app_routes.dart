@@ -3,10 +3,14 @@ import 'package:item_expo/module/bars/bindings/bars_binding.dart';
 import 'package:item_expo/module/bars/pages/bars_page.dart';
 import 'package:item_expo/module/create_collection/bindings/create_collection_controller.dart';
 import 'package:item_expo/module/create_collection/pages/create_collection_page.dart';
+import 'package:item_expo/module/create_item/bindings/create_item_binding.dart';
+import 'package:item_expo/module/create_item/pages/create_item_page.dart';
 import 'package:item_expo/module/update_collection/bindings/update_collection_controller.dart';
 import 'package:item_expo/module/update_collection/pages/update_collection_page.dart';
 import 'package:item_expo/module/item/bindings/item_binding.dart';
 import 'package:item_expo/module/item/pages/item_page.dart';
+import 'package:item_expo/module/update_item/bindings/update_item_binding.dart';
+import 'package:item_expo/module/update_item/pages/update_item_page.dart';
 import 'package:item_expo/module/user/pages/change_password_page.dart';
 import 'package:item_expo/module/collection/bindings/collection_binding.dart';
 import 'package:item_expo/module/collection/pages/collection_page.dart';
@@ -34,6 +38,8 @@ abstract class Routes {
   static const createCollection = '/createCollection';
   static const updateCollection = '/updateCollection';
   static const item = '/item';
+  static const createItem = '/createItem';
+  static const updateItem = '/updateItem';
   static const user = '/user';
   static const bars = '/bars';
   static const changePassword = '/changePassword';
@@ -101,6 +107,16 @@ class AppPages {
       name: Routes.item,
       page: () => const ItemPage(),
       binding: ItemBinding(),
+    ),
+    GetPage(
+      name: Routes.createItem,
+      page: () => const CreateItemPage(),
+      binding: CreateItemBinding(),
+    ),
+    GetPage(
+      name: Routes.updateItem,
+      page: () => const UpdateItemPage(),
+      binding: UpdateItemBinding(),
     ),
     GetPage(
       name: Routes.changePassword,
