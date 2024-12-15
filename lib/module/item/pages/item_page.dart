@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/item/controllers/item_controller.dart';
 import 'package:item_expo/routes/app_routes.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
+import 'package:item_expo_theme_package/item_expo_colors.dart';
 import 'package:lottie/lottie.dart';
 
 class ItemPage extends GetView<ItemController> {
@@ -17,7 +20,7 @@ class ItemPage extends GetView<ItemController> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed(Routes.createItem);
+          Get.toNamed(Routes.createItem, arguments: controller.collectionId);
         },
         tooltip: 'Adicionar Item',
         child: const Icon(Icons.add),
@@ -44,26 +47,43 @@ class ItemPage extends GetView<ItemController> {
             itemBuilder: (context, index) {
               final item = controller.items[index];
               return Card(
+                color: ItemExpoColors.whiteBackground,
                 elevation: 2,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        controller.title,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Image.memory(
+                        base64Decode(item.pictures?[0].imageData ?? ''),
+                        fit: BoxFit.cover,
                       ),
-                      if (item.subtitle != null)
-                        Text(
-                          item.subtitle!,
-                          style:
-                              const TextStyle(fontSize: 12, color: Colors.grey),
-                          textAlign: TextAlign.center,
-                        ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.title ?? '',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: ItemExpoColors.black,
+                            ),
+                          ),
+                          if (item.subtitle != null)
+                            Text(
+                              item.subtitle!,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: ItemExpoColors.gray,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               );
             },

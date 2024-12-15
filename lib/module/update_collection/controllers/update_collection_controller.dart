@@ -89,4 +89,21 @@ class UpdateCollectionController extends GetxController {
       }
     }
   }
+
+  void deleteCollection() async {
+    try {
+      waiting.value = true;
+
+      collection.value.categories = selectedCategories;
+      bool response = await collectionRepository.deleteCollection(collectionId);
+      waiting.value = false;
+      if (response) {
+        successSnackbar('Sua coleção foi atualizada.');
+        Get.offAllNamed(Routes.bars);
+      }
+    } catch (error) {
+      waiting.value = false;
+      handleError(error, marginBottom: 80);
+    }
+  }
 }

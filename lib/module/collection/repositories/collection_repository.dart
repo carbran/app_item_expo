@@ -18,12 +18,12 @@ class CollectionRepository {
   }
 
   Future<List<CollectionModel>> fetchCollections() async {
-    try {     
-        final response = await apiService.dio.get('/collections');
-        
-        return (response.data as List)
-            .map((collection) => CollectionModel.fromJson(collection))
-            .toList();
+    try {
+      final response = await apiService.dio.get('/collections');
+
+      return (response.data as List)
+          .map((collection) => CollectionModel.fromJson(collection))
+          .toList();
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));
@@ -32,46 +32,26 @@ class CollectionRepository {
     }
   }
 
-  // Future<List<CollectionModel>> showCollections(int id) async {
-  //   try {      
-  //       final response = await apiService.dio.get('/collections/$id');
-
-  //       return (response.data as List)
-  //           .map((collection) => CollectionModel.fromJson(collection))
-  //           .toList();
-
-  //   } on DioException catch (e) {
-  //     if (e.response == null) {
-  //       throw (unknownErrorException(e));
-  //     }
-  //     throw (responseDioException(e));
-  //   }
-  // }
-
   Future<List<CollectionModel>> showCollections(int id) async {
-  try {
-    // Faz a requisição para a API
-    final response = await apiService.dio.get('/collections/$id');
+    try {
+      final response = await apiService.dio.get('/collections/$id');
 
-    // Verifica se a resposta é um mapa (objeto JSON)
-    if (response.data is Map<String, dynamic>) {
-      // Converte o objeto JSON em um `CollectionModel`
-      final collection = CollectionModel.fromJson(response.data);
+      if (response.data is Map<String, dynamic>) {
+        final collection = CollectionModel.fromJson(response.data);
 
-      // Retorna uma lista com a única coleção obtida
-      return [collection];
-    } else {
-      throw Exception("Resposta inesperada da API: ${response.data.runtimeType}");
+        return [collection];
+      } else {
+        throw Exception(
+            "Resposta inesperada da API: ${response.data.runtimeType}");
+      }
+    } on DioException catch (e) {
+      // Trata exceções específicas do Dio
+      if (e.response == null) {
+        throw (unknownErrorException(e));
+      }
+      throw (responseDioException(e));
     }
-  } on DioException catch (e) {
-    // Trata exceções específicas do Dio
-    if (e.response == null) {
-      throw (unknownErrorException(e));
-    }
-    throw (responseDioException(e));
   }
-}
-
 
   Future<bool> createCollection(CollectionModel collection) async {
     try {
@@ -109,9 +89,32 @@ class CollectionRepository {
     }
   }
 
-  Future<void> deleteCollection(int id) async {
+  Future<bool> deleteCollection(int id) async {
     try {
-      await apiService.dio.delete('/collections/$id');
+      final response = await apiService.dio.delete('/collections/$id');
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } on DioException catch (e) {
+      if (e.response == null) {
+        throw (unknownErrorException(e));
+      }
+      throw (responseDioException(e));
+    }
+  }
+
+  Future<String?> getItemWithCollection(int? id) async {
+    try {
+      final response =
+          await apiService.dio.get('/collections/first-item-image/$id');
+
+      if (response.statusCode == 200 && response.data != []) {
+        return response.data['image_data'];
+      }
+      return null;
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));

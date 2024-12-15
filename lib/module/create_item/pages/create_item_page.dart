@@ -1,10 +1,13 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:item_expo/module/create_item/controllers/create_item_controller.dart';
 import 'package:item_expo/module/create_item/enums/condition_enum.dart';
 import 'package:item_expo/module/create_item/enums/size_type_enum.dart';
 import 'package:item_expo/shared/svg_gallery.dart';
 import 'package:item_expo/utils/helpers.dart';
+import 'package:item_expo/utils/snackbar.dart';
 import 'package:item_expo/utils/validators.dart';
 import 'package:item_expo_theme_package/item_expo_colors.dart';
 import 'package:lottie/lottie.dart';
@@ -129,9 +132,10 @@ class CreateItemPage extends GetView<CreateItemController> {
                       padding: _padding,
                       child: TextField(
                         controller: TextEditingController(
-                          text:
-                              Helpers.formattedDate(controller.startDate.value),
+                          text: Helpers.formattedDate(
+                              controller.selectedDate.value),
                         ),
+                        inputFormatters: [DataInputFormatter()],
                         decoration: const InputDecoration(
                           suffixIcon: Icon(Icons.calendar_today),
                           hintText: 'Data de aquisição',
@@ -178,16 +182,21 @@ class CreateItemPage extends GetView<CreateItemController> {
                       items: ConditionEnum.values
                           .map((e) => e.name)
                           .toList()
-                          .map((unit) => DropdownMenuItem(
-                                value: unit,
-                                child: Text(unit,
-                                    style: const TextStyle(
-                                        color: ItemExpoColors.black)),
-                              ))
+                          .map(
+                            (unit) => DropdownMenuItem(
+                              value: unit,
+                              child: Text(
+                                unit,
+                                style: const TextStyle(
+                                    color: ItemExpoColors.black),
+                              ),
+                            ),
+                          )
                           .toList(),
                       onChanged: (value) {
                         if (value != null) {
-                          controller.selectedUnit.value = value;
+                          controller.item.condition =
+                              controller.enumConditionNameToNum(value);
                         }
                       },
                     ),
@@ -246,14 +255,17 @@ class CreateItemPage extends GetView<CreateItemController> {
                                 .toList()
                                 .map((unit) => DropdownMenuItem(
                                       value: unit,
-                                      child: Text(unit,
-                                          style: const TextStyle(
-                                              color: ItemExpoColors.black)),
+                                      child: Text(
+                                        unit,
+                                        style: const TextStyle(
+                                            color: ItemExpoColors.black),
+                                      ),
                                     ))
                                 .toList(),
                             onChanged: (value) {
                               if (value != null) {
-                                controller.selectedUnit.value = value;
+                                controller.item.sizeType =
+                                    controller.enumSizeNameToNum(value);
                               }
                             },
                           ),
@@ -288,7 +300,7 @@ class CreateItemPage extends GetView<CreateItemController> {
                       style: const TextStyle(color: ItemExpoColors.black),
                       keyboardType: TextInputType.number,
                       onChanged: (value) =>
-                          controller.item.amount = value as int?,
+                          controller.item.amount = int.parse(value),
                     ),
                   ),
                   Padding(
@@ -296,7 +308,7 @@ class CreateItemPage extends GetView<CreateItemController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () => _showImageSourceModal(context),
                               child: const Text(
                                 'Adicionar Imagem',
                                 style: TextStyle(
@@ -317,7 +329,15 @@ class CreateItemPage extends GetView<CreateItemController> {
                     child: Obx(
                       () => !controller.waiting.value
                           ? ElevatedButton(
-                              onPressed: () => controller.createItem(),
+                              onPressed: () {
+                                if (controller.selectedImageBase64.value ==
+                                    null) {
+                                  errorSnackbar(
+                                      'Selecione uma imagem antes de continuar');
+                                  return;
+                                }
+                                controller.createItem();
+                              },
                               child: const Text(
                                 'Adicionar Item',
                                 style: TextStyle(
@@ -339,6 +359,39 @@ class CreateItemPage extends GetView<CreateItemController> {
           ),
         ),
       ),
+    );
+  }
+
+  void _showImageSourceModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16.0),
+          height: 150,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  Get.back(); // Fecha a modal
+                  controller.getImage(ImageSource.camera);
+                },
+                icon: const Icon(Icons.camera_alt),
+                label: const Text('Câmera'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Get.back(); // Fecha a modal
+                  controller.getImage(ImageSource.gallery);
+                },
+                icon: const Icon(Icons.photo_library),
+                label: const Text('Galeria'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

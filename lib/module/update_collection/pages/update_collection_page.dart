@@ -153,6 +153,32 @@ class UpdateCollectionPage extends GetView<UpdateCollectionController> {
                             ),
                     ),
                   ),
+                  Padding(
+                    padding: _padding,
+                    child: Obx(
+                      () => !controller.waiting.value
+                          ? ElevatedButton(
+                              style: const ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(
+                                  ItemExpoColors.red,
+                                ),
+                              ),
+                              onPressed: () => controller.deleteCollection(),
+                              child: const Text(
+                                'Excluir coleção',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )
+                          : Lottie.asset(
+                              AnimGallery.loader,
+                              width: 60,
+                              height: 52,
+                            ),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:item_expo/module/collection/controllers/collection_controller.dart';
@@ -99,34 +101,74 @@ class CollectionPage extends GetView<CollectionController> {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       final collection = controller.collections[index];
+                      controller.getImage(collection.id);
                       return GestureDetector(
-                        onTap: () {
-                          Get.toNamed(Routes.item, arguments: {
-                            'collection_name': collection.name,
-                            'collection_id': collection.id
-                          });
-                        },
-                        onLongPress: () {
-                          Get.toNamed(
-                            Routes.updateCollection,
-                            arguments: collection.id,
-                          );
-                        },
-                        child: Card(
-                          margin: const EdgeInsets.all(12),
-                          elevation: 2,
-                          child: Center(
-                            child: Text(
-                              collection.name ?? 'Minha Coleção $index',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
+                          onTap: () {
+                            Get.toNamed(Routes.item, arguments: {
+                              'collection_name': collection.name,
+                              'collection_id': collection.id
+                            });
+                          },
+                          onLongPress: () {
+                            Get.toNamed(
+                              Routes.updateCollection,
+                              arguments: collection.id,
+                            );
+                          },
+                          child: Card(
+                            elevation: 2,
+                            child: Stack(
+                              children: [
+                                Obx(
+                                  () {
+                                    final base64Image =
+                                        controller.images[collection.id];
+                                    if (base64Image != null) {
+                                      final imageBytes =
+                                          base64Decode(base64Image);
+                                      return Positioned.fill(
+                                        child: Image.memory(
+                                          imageBytes,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      );
+                                    } else {
+                                      return Positioned.fill(
+                                        child: Container(
+                                          color: Colors.grey[300],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                                // Sobreposição com título
+                                Positioned(
+                                  bottom: 8,
+                                  left: 8,
+                                  right: 8,
+                                  child: Container(
+                                    color: Colors.black.withOpacity(
+                                        0.5), // Fundo semitransparente
+                                    padding: const EdgeInsets.all(8),
+                                    child: Text(
+                                      collection.name ?? 'Minha Coleção $index',
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: ItemExpoColors.white,
+                                        shadows: [
+                                          Shadow(
+                                            color: ItemExpoColors.black,
+                                          ),
+                                        ], // Texto branco para contraste
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ),
-                      );
+                          ));
                     },
                     childCount: controller.collections.length,
                   ),

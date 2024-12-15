@@ -6,6 +6,7 @@ import 'package:item_expo/module/collection/models/category_model.dart';
 import 'package:item_expo/module/collection/repositories/category_repository.dart';
 import 'package:item_expo/module/collection/repositories/collection_repository.dart';
 import 'package:item_expo/services/profile_service.dart';
+import 'package:item_expo/utils/snackbar.dart';
 
 class CollectionController extends GetxController {
   final CollectionRepository collectionRepository = CollectionRepository();
@@ -15,6 +16,7 @@ class CollectionController extends GetxController {
   RxList<CollectionModel> collections = <CollectionModel>[].obs;
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
   RxList<CategoryModel> selectedCategories = <CategoryModel>[].obs;
+  RxMap<int, String?> images = <int, String?>{}.obs;
 
   Rx<bool> waiting = Rx(false);
 
@@ -31,7 +33,7 @@ class CollectionController extends GetxController {
       collections.value = await collectionRepository.fetchCollections();
       profile.collectionsCount.value = collections.length;
     } catch (error) {
-      Get.snackbar("Error", "Failed to load collections");
+      errorSnackbar("Falha ao carregar coleções");
     } finally {
       waiting.value = false;
     }
@@ -43,7 +45,7 @@ class CollectionController extends GetxController {
       categories.value = await categoryRepository.fetchCategories();
       profile.categories.value = categories.map((e) => e.name).join(', ');
     } catch (error) {
-      Get.snackbar("Error", "Failed to load collections");
+      errorSnackbar("Falha ao carregar categorias");
     } finally {
       waiting.value = false;
     }
@@ -59,5 +61,16 @@ class CollectionController extends GetxController {
     return profile.collectionsCount.value > 1
         ? '${profile.collectionsCount.value} coleções'
         : '${profile.collectionsCount.value} coleção';
+  }
+
+  Future<void> getImage(int? id) async {
+    try {
+      final img = await collectionRepository.getItemWithCollection(id);
+      if (img != null) {
+        images[id!] = img;
+      }
+    } catch (error) {
+      errorSnackbar('Erro ao trazer imagem para coleção');
+    }
   }
 }

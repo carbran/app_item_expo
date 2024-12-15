@@ -1,31 +1,5 @@
 import 'package:flutter/material.dart';
 
-// class TruncatedTextExample extends StatelessWidget {
-//   final String text = 'Colecionador de: Livros, Quadrinhos, Action Figures, Lego, Vinil, Moedas';
-
-//   const TruncatedTextExample({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Texto Truncado com "e mais"'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: LayoutBuilder(
-//           builder: (context, constraints) {
-//             return TextWithEllipsis(
-//               text: text,
-//               maxWidth: constraints.maxWidth,
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class TextWithEllipsis extends StatelessWidget {
   final String text;
   final double maxWidth;
@@ -41,18 +15,12 @@ class TextWithEllipsis extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme.bodyMedium!;
     const ellipsisText = ' e mais';
 
-    // Measure the width of the ellipsis
-    // final ellipsisWidth = _measureTextWidth(ellipsisText, textStyle);
-
-    // Measure the width of the full text
     final fullTextWidth = _measureTextWidth(text, textStyle);
 
-    // If the text fits, show it all
     if (fullTextWidth <= maxWidth) {
       return Text(text, style: textStyle);
     }
 
-    // Otherwise, truncate the text
     String truncatedText = '';
     for (final word in text.split(' ')) {
       final candidateText =

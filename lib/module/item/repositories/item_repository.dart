@@ -82,9 +82,15 @@ class ItemRepository {
     }
   }
 
-  Future<void> deleteItem(int id) async {
+  Future<bool> deleteItem(int id) async {
     try {
-      await apiService.dio.delete('/items/$id');
+      final response = await apiService.dio.delete('/items/$id');
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
     } on DioException catch (e) {
       if (e.response == null) {
         throw (unknownErrorException(e));

@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, constant_pattern_never_matches_value_type
 
 enum ConditionEnum {
   Terrivel(0),
