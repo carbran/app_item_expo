@@ -1,5 +1,6 @@
 class SvgGallery {
   static const String itemExpoLogo = 'assets/images/item_expo_logo.svg';
+  static const String avatar = 'assets/images/avatar.png';
 }
 
 class AnimGallery {

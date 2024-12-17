@@ -42,6 +42,7 @@ class CollectionPage extends GetView<CollectionController> {
                         const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: CircleAvatar(
+                            backgroundImage: AssetImage(SvgGallery.avatar),
                             backgroundColor: ItemExpoColors.black,
                             radius: 60,
                           ),
