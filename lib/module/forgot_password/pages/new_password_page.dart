@@ -16,7 +16,6 @@ class NewPasswordPage extends GetView<ForgotPasswordController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Esqueceu a senha?'),
-        backgroundColor: ItemExpoColors.darkPurple,
         titleTextStyle: const TextStyle(
           color: ItemExpoColors.white,
           fontWeight: FontWeight.bold,

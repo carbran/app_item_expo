@@ -17,7 +17,6 @@ class CreateCollectionPage extends GetView<CreateCollectionController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Criar Coleção'),
-        backgroundColor: ItemExpoColors.darkPurple,
         titleTextStyle: const TextStyle(
           color: ItemExpoColors.white,
           fontWeight: FontWeight.bold,
